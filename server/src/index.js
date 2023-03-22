@@ -3,7 +3,11 @@ import cors from "cors"; //cors allows the rules of communication between the fr
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
+
+
+
 import { userRouter } from "./routes/usersRoutes.js";
+import { routerRecipes } from "./routes/recipeRoutes.js";
 
 dotenv.config();
 
@@ -18,6 +22,7 @@ app.use(cors());
 mongoose.connect(process.env.DATABASE_CONNECT);
 
 app.use("/auth", userRouter);
+app.use("/recipes", routerRecipes);
 
 app.listen(Port, () => {
   console.log(`SERVER STARTED ON http://localhost: ${Port}`);
